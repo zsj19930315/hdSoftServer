@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.fjiot.hdSoftServer.mapper.DepartmentMapper">
+	<insert id="add" parameterType="Department">
+		<selectKey resultType="java.lang.String" keyProperty="id"
+			order="BEFORE">
+			select sys_guid() from dual
+		</selectKey>
+		insert into SJ_DEPARTMENT (ID, NAME, REMARK)
+		values (#{id}, #{name}, #{remark})
+	</insert>
+	<delete id="delete" parameterType="Department">
+		delete from SJ_DEPARTMENT where id = #{id}
+	</delete>
+	<update id="update" parameterType="Department">
+		update SJ_DEPARTMENT set NAME = #{name}, REMARK = #{remark} where id = #{id}
+	</update>
+	<select id="selectOne" parameterType="string" resultType="Department">
+		select * from SJ_DEPARTMENT where id = #{id}
+	</select>
+	<select id="selectlist" resultType="Department">
+		select * from SJ_DEPARTMENT
+	</select>
+</mapper>
