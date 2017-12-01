@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.org.fjiot.hdSoftServer.entity.User;
 import cn.org.fjiot.hdSoftServer.service.UserService;
+import cn.org.fjiot.hdSoftServer.util.AjaxResult;
 
 /** 
 * @ClassName: AppUserLogin 
@@ -31,8 +32,12 @@ public class AppUserLogin {
 	
 	@RequestMapping("/login")
 	public Object login(User user) {
-		userService.login(user);
-		return null;
+		String code = "0";
+		String message = userService.login(user);
+		if ("登录成功".equals(message)) {
+			code = "1";
+		}
+		return new AjaxResult(code, message);
 	}
 
 }

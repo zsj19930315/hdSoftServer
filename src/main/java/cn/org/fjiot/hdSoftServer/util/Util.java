@@ -8,6 +8,10 @@
 */
 package cn.org.fjiot.hdSoftServer.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 /** 
 * @ClassName: Util 
 * @Description: TODO
@@ -16,6 +20,13 @@ package cn.org.fjiot.hdSoftServer.util;
 *  
 */
 public class Util {
+	
+	public static String getToken() {
+		String time = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+		String uuid = UUID.randomUUID().toString().replace("-", "").substring(28);
+		String token = "NO" + time + uuid;
+		return token;
+	}
 	
 	public static boolean isEqual(String a, String b) {
 		if (null != a && null != b) {

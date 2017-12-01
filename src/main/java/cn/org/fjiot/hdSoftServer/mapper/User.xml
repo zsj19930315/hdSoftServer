@@ -9,7 +9,7 @@
 		</selectKey>
 		insert into SJ_USER values (#{id}, #{name}, #{password}, #{nickname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{hospitalId,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR})
 	</insert>
-	<select id="selectOne" parameterType="User" resultType="User">
+	<select id="selectOne" resultType="User">
 		select * from SJ_USER where name = #{name} and password = #{password}
 	</select>
 </mapper>

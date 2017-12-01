@@ -13,4 +13,7 @@
 	<select id="listHospital" resultType="Hospital">
 		select * from SJ_HOSPITAL
 	</select>
+	<select id="selectOne" resultType="Hospital">
+		select * from SJ_HOSPITAL where ID = #{id} and ENABLE = #{enable}
+	</select>
 </mapper>

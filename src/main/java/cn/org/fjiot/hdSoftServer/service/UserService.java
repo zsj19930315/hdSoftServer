@@ -19,6 +19,6 @@ import cn.org.fjiot.hdSoftServer.entity.User;
 */
 public interface UserService {
 
-	public Object login(User user);
+	public String login(User user);
 
 }

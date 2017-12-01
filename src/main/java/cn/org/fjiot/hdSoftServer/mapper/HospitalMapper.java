@@ -10,6 +10,8 @@ package cn.org.fjiot.hdSoftServer.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.org.fjiot.hdSoftServer.entity.Hospital;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
@@ -25,5 +27,7 @@ public interface HospitalMapper extends BaseMapper {
 	public void addHospital(Hospital hospital);
 	
 	public List<Hospital> listHospital();
+
+	public Hospital selectOne(@Param("id")String id, @Param("enable")String enable);
 
 }

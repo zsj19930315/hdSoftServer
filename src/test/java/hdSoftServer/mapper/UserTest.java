@@ -45,7 +45,7 @@ public class UserTest {
 		User user = new User();
 		user.setName("lishumei");
 		user.setPassword("123456");
-		user = userMapper.selectOne(user);
+		user = userMapper.selectOne(user.getName(), user.getPassword());
 		System.out.println(user);
 	}
 
