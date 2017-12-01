@@ -8,6 +8,7 @@
 */
 package cn.org.fjiot.hdSoftServer.mapper;
 
+import cn.org.fjiot.hdSoftServer.entity.User;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
 /** 
@@ -18,5 +19,9 @@ import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 *  
 */
 public interface UserMapper extends BaseMapper {
+
+	public void add(User user);
+	
+	public User selectOne(User user);
 
 }

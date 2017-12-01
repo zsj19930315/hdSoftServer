@@ -24,7 +24,7 @@ public class Device extends BaseEntityImpl {
 
 	private String isLowElec;
 
-	private String isLost;
+	private String isLose;
 
 	private String isError;
 
@@ -33,6 +33,8 @@ public class Device extends BaseEntityImpl {
 	private String weightThreshold;
 
 	private String weightCur;
+	
+	private String isLowLevel;
 
 	public String getId() {
 		return id;
@@ -114,12 +116,12 @@ public class Device extends BaseEntityImpl {
 		this.isLowElec = isLowElec;
 	}
 
-	public String getIsLost() {
-		return isLost;
+	public String getIsLose() {
+		return isLose;
 	}
 
-	public void setIsLost(String isLost) {
-		this.isLost = isLost;
+	public void setIsLose(String isLose) {
+		this.isLose = isLose;
 	}
 
 	public String getIsError() {
@@ -152,6 +154,14 @@ public class Device extends BaseEntityImpl {
 
 	public void setWeightCur(String weightCur) {
 		this.weightCur = weightCur;
+	}
+
+	public String getIsLowLevel() {
+		return isLowLevel;
+	}
+
+	public void setIsLowLevel(String isLowLevel) {
+		this.isLowLevel = isLowLevel;
 	}
 
 }

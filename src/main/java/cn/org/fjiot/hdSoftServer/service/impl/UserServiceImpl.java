@@ -8,6 +8,13 @@
 */
 package cn.org.fjiot.hdSoftServer.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.org.fjiot.hdSoftServer.entity.Hospital;
+import cn.org.fjiot.hdSoftServer.entity.User;
+import cn.org.fjiot.hdSoftServer.mapper.HospitalMapper;
+import cn.org.fjiot.hdSoftServer.mapper.UserMapper;
 import cn.org.fjiot.hdSoftServer.service.UserService;
 
 /** 
@@ -17,6 +24,29 @@ import cn.org.fjiot.hdSoftServer.service.UserService;
 * @date 2017年11月28日 下午5:50:23 
 *  
 */
+@Service
 public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	UserMapper userMapper;
+	
+	@Autowired
+	HospitalMapper hospitalMapper;
+
+	@Override
+	public Object login(User user) {
+//		if (null == user || null == user.getName() || null == user.getPassword()) {
+//			return "请输入用户信息";
+//		}
+//		user = userMapper.selectOne(user);
+//		if (null == user) {
+//			return "账号密码错误";
+//		}
+//		Hospital hospital = hospitalMapper.selectOne(user.getHospitalId(), "1");
+//		if (null == hospital) {
+//			return "该医院权限未开放，请联系管理员";
+//		}
+		return "success";
+	}
 
 }

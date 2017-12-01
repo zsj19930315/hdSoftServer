@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.fjiot.hdSoftServer.mapper.UserMapper">
+	<insert id="add" parameterType="User">
+		<selectKey resultType="string" keyProperty="id"
+			order="BEFORE">
+			select sys_guid() from dual
+		</selectKey>
+		insert into SJ_USER values (#{id}, #{name}, #{password}, #{nickname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{hospitalId,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR})
+	</insert>
+	<select id="selectOne" parameterType="User" resultType="User">
+		select * from SJ_USER where name = #{name} and password = #{password}
+	</select>
+</mapper>
