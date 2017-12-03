@@ -9,6 +9,7 @@
 package cn.org.fjiot.hdSoftServer.service;
 
 import cn.org.fjiot.hdSoftServer.entity.User;
+import cn.org.fjiot.hdSoftServer.util.AjaxResult;
 
 /** 
 * @ClassName: UserService 
@@ -19,6 +20,17 @@ import cn.org.fjiot.hdSoftServer.entity.User;
 */
 public interface UserService {
 
-	public String login(User user);
+	public AjaxResult login(User user);
+
+	public AjaxResult logout(String token);
+	
+	//测试用，后期删掉
+	public void testAop();
+
+	public void testAop1();
+
+	public void testAop1(String test);
+
+	public void testAop1(String test, String test1);
 
 }

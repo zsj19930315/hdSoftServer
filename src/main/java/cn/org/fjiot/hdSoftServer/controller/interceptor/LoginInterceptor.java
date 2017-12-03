@@ -40,7 +40,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (null != token && UserSessionUtil.containUserSession(token)) {
 			return true;
 		}
-		LOGGER.error("token过期");
+		LOGGER.error("无效token");
 		return false;
 	}
 

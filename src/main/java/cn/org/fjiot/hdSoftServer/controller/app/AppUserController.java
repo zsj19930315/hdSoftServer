@@ -8,6 +8,8 @@
 */
 package cn.org.fjiot.hdSoftServer.controller.app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,7 @@ import cn.org.fjiot.hdSoftServer.service.UserService;
 import cn.org.fjiot.hdSoftServer.util.AjaxResult;
 
 /** 
-* @ClassName: AppUserLogin 
+* @ClassName: AppUserController 
 * @Description: TODO
 * @author zhengshaojian fjiot 
 * @date 2017年12月1日 上午11:01:15 
@@ -25,19 +27,23 @@ import cn.org.fjiot.hdSoftServer.util.AjaxResult;
 */
 @RestController
 @RequestMapping("/app/user")
-public class AppUserLogin {
+public class AppUserController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(AppUserController.class);
 	
 	@Autowired
 	UserService userService;
 	
 	@RequestMapping("/login")
-	public Object login(User user) {
-		String code = "0";
-		String message = userService.login(user);
-		if ("登录成功".equals(message)) {
-			code = "1";
-		}
-		return new AjaxResult(code, message);
+	public AjaxResult login(User user) {
+		AjaxResult result = userService.login(user);
+		return result;
+	}
+	
+	@RequestMapping("/logout")
+	public AjaxResult logout(String token) {
+		AjaxResult result = userService.logout(token);
+		return result;
 	}
 
 }

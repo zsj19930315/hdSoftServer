@@ -10,6 +10,7 @@ package cn.org.fjiot.hdSoftServer.cache;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /** 
 * @ClassName: UserSession 
@@ -36,6 +37,14 @@ public class UserSession {
 	
 	public void removeAttribute(String key) {
 		attribute.remove(key);
+	}
+	
+	public void removeAllAttribute() {
+		Set<String> keys = attribute.keySet();
+		for (String key : keys) {
+			attribute.remove(key);
+		}
+		attribute = null;
 	}
 
 }

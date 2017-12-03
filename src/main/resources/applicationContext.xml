@@ -16,6 +16,8 @@
 
 	<context:component-scan base-package="cn.org.fjiot.hdSoftServer.*" />
 
+	<aop:aspectj-autoproxy />
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
