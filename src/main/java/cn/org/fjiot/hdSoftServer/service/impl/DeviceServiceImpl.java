@@ -69,8 +69,6 @@ public class DeviceServiceImpl implements DeviceService {
 			message = "请输入相关信息";
 			return new AjaxResult(code, message);
 		}
-		UserSession userSession = UserSessionUtil.getUserSession(token);
-		User user = (User) userSession.getAttribute("user");
 		Device device = deviceMapper.selectOne(deviceNo);
 		if (null == device) {
 			message = "数据库未找到该设备，请联系管理员";
@@ -89,6 +87,26 @@ public class DeviceServiceImpl implements DeviceService {
 		User user = (User) userSession.getAttribute("user");
 		List<Device> devices = deviceMapper.selectListByUserId(user.getId());
 		return new AjaxResult("1", "请求成功", devices);
+	}
+
+	@Override
+	public AjaxResult edit(String token, String deviceNo, String roomBed) {
+		String code = "0";
+		String message = "";
+		if (null == deviceNo) {
+			message = "请输入相关信息";
+			return new AjaxResult(code, message);
+		}
+		Device device = deviceMapper.selectOne(deviceNo);
+		if (null == device) {
+			message = "数据库未找到该设备，请联系管理员";
+			return new AjaxResult(code, message);
+		}
+		code = "1";
+		message = "请求成功";
+		device.setRoomBed(roomBed);
+		deviceMapper.update(device);
+		return new AjaxResult(code, message);
 	}
 
 }

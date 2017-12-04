@@ -28,4 +28,6 @@ public interface DeviceService {
 	
 	public AjaxResult list(String token);
 
+	public AjaxResult edit(String token, String deviceNo, String roomBed);
+
 }

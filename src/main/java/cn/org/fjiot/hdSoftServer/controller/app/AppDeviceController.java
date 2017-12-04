@@ -48,4 +48,10 @@ public class AppDeviceController {
 		return result;
 	}
 
+	@RequestMapping(value="/edit", method=RequestMethod.GET)
+	public AjaxResult edit(String token, String deviceNo, String roomBed) {
+		AjaxResult result = deviceService.edit(token, deviceNo, roomBed);
+		return result;
+	}
+
 }
