@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public AjaxResult info(String token) {
 		UserSession userSession = UserSessionUtil.getUserSession(token);
-		User user = (User) userSession.getAttribute("usesr");
+		User user = (User) userSession.getAttribute("user");
 		return new AjaxResult("1", "请求成功", user);
 	}
 
