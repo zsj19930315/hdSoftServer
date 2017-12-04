@@ -71,8 +71,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public AjaxResult logout(String token) {
-		UserSession userSession = UserSessionUtil.getUserSession(token);
-		userSession.removeAllAttribute();
 		UserSessionUtil.removeUserSession(token);
 		return new AjaxResult("1", "登出成功");
 	}
