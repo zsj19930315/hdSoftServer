@@ -64,6 +64,10 @@ public class VisitorServiceImpl implements VisitorService {
 	public AjaxResult device(String token, String deviceNo) {
 		String code = "0";
 		String message = "";
+		if (null == deviceNo) {
+			message = "请输入相关信息";
+			return new AjaxResult(code, message);
+		}
 		Device device = deviceService.selectOne(deviceNo);
 		if (null == device) {
 			message = "数据库未找到该设备，请联系管理员";

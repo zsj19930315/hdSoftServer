@@ -9,6 +9,7 @@
 package cn.org.fjiot.hdSoftServer.service;
 
 import cn.org.fjiot.hdSoftServer.entity.Device;
+import cn.org.fjiot.hdSoftServer.util.AjaxResult;
 
 /** 
 * @ClassName: DeviceService 
@@ -20,5 +21,11 @@ import cn.org.fjiot.hdSoftServer.entity.Device;
 public interface DeviceService {
 
 	public Device selectOne(String deviceNo);
+
+	public AjaxResult associat(String token, String deviceNo);
+
+	public AjaxResult unAssociat(String token, String deviceNo);
+	
+	public AjaxResult list(String token);
 
 }

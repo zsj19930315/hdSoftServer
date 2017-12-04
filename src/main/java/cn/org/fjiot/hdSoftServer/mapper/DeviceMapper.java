@@ -8,6 +8,8 @@
 */
 package cn.org.fjiot.hdSoftServer.mapper;
 
+import java.util.List;
+
 import cn.org.fjiot.hdSoftServer.entity.Device;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
@@ -21,5 +23,11 @@ import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 public interface DeviceMapper extends BaseMapper {
 
 	public Device selectOne(String deviceNo);
+
+	public void update(Device device);
+
+//	public void delete(@Param("deviceNo")String deviceNo, @Param("userId")String userId);
+
+	public List<Device> selectListByUserId(String userId);
 
 }

@@ -5,4 +5,13 @@
 	<select id="selectOne" parameterType="string" resultType="Device">
 		select * from SJ_DEVICE where DEVICE_NO = #{deviceNo}
 	</select>
+	<update id="update" parameterType="Device">
+		update SJ_DEVICE set USER_ID = #{userId, jdbcType=VARCHAR} where ID = #{id}
+	</update>
+	<!-- <delete id="delete">
+		delete from SJ_DEVICE where DEVICE_NO = #{deviceNo} and USER_ID = #{userId}
+	</delete> -->
+	<select id="selectListByUserId" parameterType="string" resultType="Device">
+		select * from SJ_DEVICE where USER_ID = #{userId}
+	</select>
 </mapper>
