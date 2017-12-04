@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.org.fjiot.hdSoftServer.entity.User;
@@ -34,13 +35,13 @@ public class AppUserController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping("/login")
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public AjaxResult login(User user) {
 		AjaxResult result = userService.login(user);
 		return result;
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public AjaxResult logout(String token) {
 		AjaxResult result = userService.logout(token);
 		return result;
