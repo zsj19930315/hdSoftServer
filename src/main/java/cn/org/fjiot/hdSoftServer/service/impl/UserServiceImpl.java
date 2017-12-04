@@ -60,12 +60,12 @@ public class UserServiceImpl implements UserService {
 			return new AjaxResult(code, message);
 		}
 		code = "1";
+		message = "登录成功";
 		String token = Util.getToken();
 		UserSession userSession = UserSessionUtil.getUserSession(token);
 		userSession.setAttribute("token", token);
 		userSession.setAttribute("user", user);
 		userSession.setAttribute("hospital", hospital);
-		message = "登录成功";
 		return new AjaxResult(code, message, token);
 	}
 
@@ -93,6 +93,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void testAop1(String test, String test1) {
 		LOGGER.error("testAop1"+test+test1);
+	}
+
+	@Override
+	public AjaxResult info(String token) {
+		UserSession userSession = UserSessionUtil.getUserSession(token);
+		User user = (User) userSession.getAttribute("usesr");
+		return new AjaxResult("1", "请求成功", user);
 	}
 
 }

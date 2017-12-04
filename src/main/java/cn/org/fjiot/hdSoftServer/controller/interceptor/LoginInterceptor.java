@@ -33,13 +33,16 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String uri = request.getRequestURI();
-		if (uri.indexOf("/app/user/login.do") >= 0) {
+		if (uri.indexOf("/app/user/login.do") >= 0 || uri.indexOf("/app/visitor/login.do") >= 0) {
 			return true;
 		}
 		String token = request.getParameter("token");
 		if (null != token && UserSessionUtil.containUserSession(token)) {
 			return true;
 		}
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("Content-type", "text/html;charset=UTF-8");
+		response.getWriter().write("无效token");
 		LOGGER.error("无效token");
 		return false;
 	}

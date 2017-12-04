@@ -8,6 +8,9 @@
 */
 package cn.org.fjiot.hdSoftServer.service;
 
+import cn.org.fjiot.hdSoftServer.entity.Visitor;
+import cn.org.fjiot.hdSoftServer.util.AjaxResult;
+
 /** 
 * @ClassName: VisitorService 
 * @Description: TODO
@@ -16,5 +19,11 @@ package cn.org.fjiot.hdSoftServer.service;
 *  
 */
 public interface VisitorService {
+
+	public AjaxResult login(Visitor visitor);
+
+	public AjaxResult device(String token, String deviceNo);
+
+	public AjaxResult logout(String token);
 
 }

@@ -8,6 +8,7 @@
 */
 package cn.org.fjiot.hdSoftServer.mapper;
 
+import cn.org.fjiot.hdSoftServer.entity.Device;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
 /** 
@@ -18,5 +19,7 @@ import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 *  
 */
 public interface DeviceMapper extends BaseMapper {
+
+	public Device selectOne(String deviceNo);
 
 }

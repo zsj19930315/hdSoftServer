@@ -8,6 +8,8 @@
 */
 package cn.org.fjiot.hdSoftServer.service;
 
+import cn.org.fjiot.hdSoftServer.entity.Device;
+
 /** 
 * @ClassName: DeviceService 
 * @Description: TODO
@@ -16,5 +18,7 @@ package cn.org.fjiot.hdSoftServer.service;
 *  
 */
 public interface DeviceService {
+
+	public Device selectOne(String deviceNo);
 
 }

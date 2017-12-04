@@ -46,5 +46,11 @@ public class AppUserController {
 		AjaxResult result = userService.logout(token);
 		return result;
 	}
+	
+	@RequestMapping(value="/info", method=RequestMethod.GET)
+	public AjaxResult info(String token) {
+		AjaxResult result = userService.info(token);
+		return result;
+	}
 
 }

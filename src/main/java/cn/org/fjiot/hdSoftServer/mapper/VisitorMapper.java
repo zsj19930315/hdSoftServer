@@ -8,6 +8,7 @@
 */
 package cn.org.fjiot.hdSoftServer.mapper;
 
+import cn.org.fjiot.hdSoftServer.entity.Visitor;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
 /** 
@@ -18,5 +19,11 @@ import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 *  
 */
 public interface VisitorMapper extends BaseMapper {
+	
+	public void add(Visitor visitor);
+	
+	public void update(Visitor visitor);
+
+	public Visitor selectOne(String tag);
 
 }

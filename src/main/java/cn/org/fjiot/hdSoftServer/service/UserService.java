@@ -32,5 +32,8 @@ public interface UserService {
 	public void testAop1(String test);
 
 	public void testAop1(String test, String test1);
+	//测试到此为止
+
+	public AjaxResult info(String token);
 
 }
