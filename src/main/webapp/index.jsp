@@ -7,13 +7,6 @@
 <title>测试</title>
 </head>
 <body>
-<form action="hospital/addHospital.do">
-	名字:<input name="name" type="text" value="test"><br/>
-	可用:<input name="enable" type="text" value="test"><br/>
-	手机:<input name="phone" type="text" value="test"><br/>
-	地址:<input name="address" type="text" value="test"><br/>
-	备注:<input name="remark" type="text" value="test"><br/>
-	<input type="submit" value="添加">
-</form>
+<h1>HelloWorld</h1>
 </body>
 </html>
