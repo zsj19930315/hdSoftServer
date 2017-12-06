@@ -2,6 +2,46 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.org.fjiot.hdSoftServer.mapper.DeviceMapper">
+	<resultMap type="DeviceInfo" id="DeviceBean">
+		<id property="id" column="deviceId"/>
+		<result property="deviceNo" column="DEVICE_NO"/>
+		<result property="isStart" column="IS_START"/>
+		<result property="electric" column="ELECTRIC"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="updateTime" column="UPDATE_TIME"/>
+		<result property="endTime" column="END_TIME"/>
+		<result property="roomBed" column="ROOM_BED"/>
+		<result property="isLowElec" column="IS_LOW_ELEC"/>
+		<result property="isLose" column="IS_LOSE"/>
+		<result property="isError" column="IS_ERROR"/>
+		<result property="weightSum" column="WEIGHT_SUM"/>
+		<result property="weightThreshold" column="WEIGHT_THRESHOLD"/>
+		<result property="weightCur" column="WEIGHT_CUR"/>
+		<result property="isLowLevel" column="IS_LOW_LEVEL"/>
+		<!-- <result property="" column=""/> -->
+		<association property="userInfo" javaType="UserInfo">
+			<id property="id" column="userId"/>
+			<result property="remark" column="userRemark"/>
+			<result property="name" column="userName"/>
+			<result property="password" column="PASSWORD"/>
+			<result property="nickname" column="NICKNAME"/>
+			<result property="sex" column="SEX"/>
+			<result property="phone" column="PHONE"/>
+			<result property="email" column="EMAIL"/>
+			<result property="permission" column="PERMISSION"/>
+			<result property="hospitalId" column="HOSPITAL_ID"/>
+			<!-- <association property="hospital" javaType="Hospital">
+				<id property="id" column="departmentId"/>
+				<result property="remark" column="departmentRemark"/>
+				<result property="name" column="departmentName"/>
+			</association> -->
+			<association property="department" javaType="Department">
+				<id property="id" column="departmentId"/>
+				<result property="remark" column="departmentRemark"/>
+				<result property="name" column="departmentName"/>
+			</association>
+		</association>
+	</resultMap>
 	<select id="selectOne" parameterType="string" resultType="Device">
 		select * from SJ_DEVICE where DEVICE_NO = #{deviceNo}
 	</select>
@@ -13,5 +53,8 @@
 	</delete> -->
 	<select id="selectListByUserId" parameterType="string" resultType="Device">
 		select * from SJ_DEVICE where USER_ID = #{userId}
+	</select>
+	<select id="selectInfoListByUserId" parameterType="string" resultMap="DeviceBean">
+		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and u.id = #{userId} and u.DEPARTMENT_ID = dp.ID
 	</select>
 </mapper>

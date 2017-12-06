@@ -17,6 +17,7 @@ import cn.org.fjiot.hdSoftServer.cache.UserSession;
 import cn.org.fjiot.hdSoftServer.cache.UserSessionUtil;
 import cn.org.fjiot.hdSoftServer.entity.Device;
 import cn.org.fjiot.hdSoftServer.entity.User;
+import cn.org.fjiot.hdSoftServer.entity.other.DeviceInfo;
 import cn.org.fjiot.hdSoftServer.mapper.DeviceMapper;
 import cn.org.fjiot.hdSoftServer.service.DeviceService;
 import cn.org.fjiot.hdSoftServer.util.AjaxResult;
@@ -85,8 +86,9 @@ public class DeviceServiceImpl implements DeviceService {
 	public AjaxResult list(String token) {
 		UserSession userSession = UserSessionUtil.getUserSession(token);
 		User user = (User) userSession.getAttribute("user");
-		List<Device> devices = deviceMapper.selectListByUserId(user.getId());
-		return new AjaxResult("1", "请求成功", devices);
+//		List<Device> devices = deviceMapper.selectListByUserId(user.getId());
+		List<DeviceInfo> deviceInfos = deviceMapper.selectInfoListByUserId(user.getId());
+		return new AjaxResult("1", "请求成功", deviceInfos);
 	}
 
 	@Override
