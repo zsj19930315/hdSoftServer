@@ -15,6 +15,7 @@ import cn.org.fjiot.hdSoftServer.cache.UserSession;
 import cn.org.fjiot.hdSoftServer.cache.UserSessionUtil;
 import cn.org.fjiot.hdSoftServer.entity.Device;
 import cn.org.fjiot.hdSoftServer.entity.Visitor;
+import cn.org.fjiot.hdSoftServer.entity.other.DeviceInfo;
 import cn.org.fjiot.hdSoftServer.mapper.VisitorMapper;
 import cn.org.fjiot.hdSoftServer.service.DeviceService;
 import cn.org.fjiot.hdSoftServer.service.VisitorService;
@@ -68,8 +69,9 @@ public class VisitorServiceImpl implements VisitorService {
 			message = "请输入相关信息";
 			return new AjaxResult(code, message);
 		}
-		Device device = deviceService.selectOne(deviceNo);
-		if (null == device) {
+//		Device device = deviceService.selectOne(deviceNo);
+		DeviceInfo deviceInfo = deviceService.selectInfoOne(deviceNo);
+		if (null == deviceInfo) {
 			message = "数据库未找到该设备，请联系管理员";
 			return new AjaxResult(code, message);
 		}
@@ -80,8 +82,8 @@ public class VisitorServiceImpl implements VisitorService {
 		visitor.setDeviceNo(deviceNo);
 		visitorMapper.update(visitor);
 		userSession.setAttribute("visitor", visitor);
-		userSession.setAttribute("device", device);
-		return new AjaxResult(code, message, device);
+		userSession.setAttribute("deviceInfo", deviceInfo);
+		return new AjaxResult(code, message, deviceInfo);
 	}
 
 	@Override

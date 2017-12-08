@@ -33,4 +33,6 @@ public interface DeviceMapper extends BaseMapper {
 	
 	public List<DeviceInfo> selectInfoListByUserId(String userId);
 
+	public DeviceInfo selectInfoOne(String deviceNo);
+
 }

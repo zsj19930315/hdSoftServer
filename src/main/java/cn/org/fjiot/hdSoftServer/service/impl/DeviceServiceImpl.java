@@ -111,4 +111,9 @@ public class DeviceServiceImpl implements DeviceService {
 		return new AjaxResult(code, message);
 	}
 
+	@Override
+	public DeviceInfo selectInfoOne(String deviceNo) {
+		return deviceMapper.selectInfoOne(deviceNo);
+	}
+
 }
