@@ -102,4 +102,9 @@ public class UserServiceImpl implements UserService {
 		return new AjaxResult("1", "请求成功", user);
 	}
 
+	@Override
+	public User selectOne(String userId) {
+		return userMapper.selectOneById(userId);
+	}
+
 }

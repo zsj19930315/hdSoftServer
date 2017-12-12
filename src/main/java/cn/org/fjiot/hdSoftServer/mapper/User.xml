@@ -12,4 +12,7 @@
 	<select id="selectOne" resultType="User">
 		select * from SJ_USER where name = #{name} and password = #{password}
 	</select>
+	<select id="selectOneById" resultType="User">
+		select * from SJ_USER where id = #{id}
+	</select>
 </mapper>

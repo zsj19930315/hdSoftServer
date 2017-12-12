@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import cn.org.fjiot.hdSoftServer.cache.UserSession;
 import cn.org.fjiot.hdSoftServer.cache.UserSessionUtil;
-import cn.org.fjiot.hdSoftServer.entity.Device;
 import cn.org.fjiot.hdSoftServer.entity.Visitor;
 import cn.org.fjiot.hdSoftServer.entity.other.DeviceInfo;
 import cn.org.fjiot.hdSoftServer.mapper.VisitorMapper;
@@ -42,7 +41,7 @@ public class VisitorServiceImpl implements VisitorService {
 	public AjaxResult login(Visitor visitor) {
 		String code = "0";
 		String message = "";
-		if (null == visitor.getTag()) {
+		if (null == visitor || null == visitor.getTag()) {
 			message = "请输入相关信息";
 			return new AjaxResult(code, message);
 		}
@@ -69,7 +68,6 @@ public class VisitorServiceImpl implements VisitorService {
 			message = "请输入相关信息";
 			return new AjaxResult(code, message);
 		}
-//		Device device = deviceService.selectOne(deviceNo);
 		DeviceInfo deviceInfo = deviceService.selectInfoOne(deviceNo);
 		if (null == deviceInfo) {
 			message = "数据库未找到该设备，请联系管理员";

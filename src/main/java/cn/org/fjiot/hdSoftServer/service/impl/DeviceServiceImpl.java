@@ -20,6 +20,7 @@ import cn.org.fjiot.hdSoftServer.entity.User;
 import cn.org.fjiot.hdSoftServer.entity.other.DeviceInfo;
 import cn.org.fjiot.hdSoftServer.mapper.DeviceMapper;
 import cn.org.fjiot.hdSoftServer.service.DeviceService;
+import cn.org.fjiot.hdSoftServer.service.UserService;
 import cn.org.fjiot.hdSoftServer.util.AjaxResult;
 
 /** 
@@ -34,6 +35,9 @@ public class DeviceServiceImpl implements DeviceService {
 	
 	@Autowired
 	DeviceMapper deviceMapper;
+	
+	@Autowired
+	UserService userService;
 
 	@Override
 	public Device selectOne(String deviceNo) {
@@ -53,6 +57,12 @@ public class DeviceServiceImpl implements DeviceService {
 		Device device = deviceMapper.selectOne(deviceNo);
 		if (null == device) {
 			message = "数据库未找到该设备，请联系管理员";
+			return new AjaxResult(code, message);
+		}
+		String userId = device.getUserId();
+		if (null != userId) {
+			String nickName = userService.selectOne(userId).getNickname();
+			message = "该设备已被"+nickName+"绑定";
 			return new AjaxResult(code, message);
 		}
 		code = "1";
@@ -86,7 +96,6 @@ public class DeviceServiceImpl implements DeviceService {
 	public AjaxResult list(String token) {
 		UserSession userSession = UserSessionUtil.getUserSession(token);
 		User user = (User) userSession.getAttribute("user");
-//		List<Device> devices = deviceMapper.selectListByUserId(user.getId());
 		List<DeviceInfo> deviceInfos = deviceMapper.selectInfoListByUserId(user.getId());
 		return new AjaxResult("1", "请求成功", deviceInfos);
 	}

@@ -26,4 +26,6 @@ public interface UserMapper extends BaseMapper {
 	
 	public User selectOne(@Param("name")String name, @Param("password")String password);
 
+	public User selectOneById(String id);
+
 }

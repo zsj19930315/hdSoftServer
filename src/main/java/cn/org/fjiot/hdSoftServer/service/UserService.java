@@ -36,4 +36,6 @@ public interface UserService {
 
 	public AjaxResult info(String token);
 
+	public User selectOne(String userId);
+
 }
