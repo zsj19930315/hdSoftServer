@@ -8,6 +8,10 @@
 */
 package cn.org.fjiot.hdSoftServer.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import cn.org.fjiot.hdSoftServer.entity.Department;
+import cn.org.fjiot.hdSoftServer.mapper.DepartmentMapper;
 import cn.org.fjiot.hdSoftServer.service.DepartmentService;
 
 /** 
@@ -18,5 +22,13 @@ import cn.org.fjiot.hdSoftServer.service.DepartmentService;
 *  
 */
 public class DepartmentServiceImpl implements DepartmentService {
+	
+	@Autowired
+	DepartmentMapper departmentMapper;
+
+	@Override
+	public Department selectOne(String id) {
+		return departmentMapper.selectOne(id);
+	}
 
 }

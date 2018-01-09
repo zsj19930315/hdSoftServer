@@ -8,6 +8,7 @@
 */
 package cn.org.fjiot.hdSoftServer.mapper;
 
+import cn.org.fjiot.hdSoftServer.entity.Department;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
 /** 
@@ -18,5 +19,7 @@ import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 *  
 */
 public interface DepartmentMapper extends BaseMapper {
+
+	Department selectOne(String id);
 
 }

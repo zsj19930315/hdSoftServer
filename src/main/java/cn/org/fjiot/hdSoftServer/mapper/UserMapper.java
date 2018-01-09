@@ -11,6 +11,7 @@ package cn.org.fjiot.hdSoftServer.mapper;
 import org.apache.ibatis.annotations.Param;
 
 import cn.org.fjiot.hdSoftServer.entity.User;
+import cn.org.fjiot.hdSoftServer.entity.other.UserInfo;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
 /** 
@@ -27,5 +28,7 @@ public interface UserMapper extends BaseMapper {
 	public User selectOne(@Param("name")String name, @Param("password")String password);
 
 	public User selectOneById(String id);
+	
+	public UserInfo selectInfoOneById(String id);
 
 }

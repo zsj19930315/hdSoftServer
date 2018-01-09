@@ -8,6 +8,11 @@
 */
 package cn.org.fjiot.hdSoftServer.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.org.fjiot.hdSoftServer.entity.Notice;
 import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 
 /** 
@@ -18,5 +23,18 @@ import cn.org.fjiot.hdSoftServer.framework.BaseMapper;
 *  
 */
 public interface NoticeMapper extends BaseMapper {
+
+	public void add(Notice notice);
+
+	/**
+	 * @return  
+	* @Title: list 
+	* @Description: TODO
+	* @param @param hospitalId
+	* @param @param departmentId    设定文件 
+	* @return void    返回类型 
+	* @throws 
+	*/
+	public List<Notice> list(@Param("hospitalId")String hospitalId, @Param("departmentId")String departmentId);
 
 }

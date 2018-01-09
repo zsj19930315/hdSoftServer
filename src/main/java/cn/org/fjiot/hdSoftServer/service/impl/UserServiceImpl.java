@@ -17,6 +17,7 @@ import cn.org.fjiot.hdSoftServer.cache.UserSession;
 import cn.org.fjiot.hdSoftServer.cache.UserSessionUtil;
 import cn.org.fjiot.hdSoftServer.entity.Hospital;
 import cn.org.fjiot.hdSoftServer.entity.User;
+import cn.org.fjiot.hdSoftServer.entity.other.UserInfo;
 import cn.org.fjiot.hdSoftServer.mapper.HospitalMapper;
 import cn.org.fjiot.hdSoftServer.mapper.UserMapper;
 import cn.org.fjiot.hdSoftServer.service.UserService;
@@ -40,6 +41,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	HospitalMapper hospitalMapper;
+	
+//	@Autowired
+//	DepartmentService departmentService;
 
 	@Override
 	public AjaxResult login(User user) {
@@ -99,7 +103,8 @@ public class UserServiceImpl implements UserService {
 	public AjaxResult info(String token) {
 		UserSession userSession = UserSessionUtil.getUserSession(token);
 		User user = (User) userSession.getAttribute("user");
-		return new AjaxResult("1", "请求成功", user);
+		UserInfo userInfo = userMapper.selectInfoOneById(user.getId());
+		return new AjaxResult("1", "请求成功", userInfo);
 	}
 
 	@Override

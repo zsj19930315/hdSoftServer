@@ -23,6 +23,8 @@ public class Notice extends BaseEntityImpl {
 	private String departmentId;
 
 	private String isTop;
+	
+	private String name;
 
 	public String getId() {
 		return id;
@@ -102,6 +104,14 @@ public class Notice extends BaseEntityImpl {
 
 	public void setIsTop(String isTop) {
 		this.isTop = isTop;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

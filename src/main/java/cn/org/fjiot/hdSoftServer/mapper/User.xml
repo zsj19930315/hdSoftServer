@@ -2,6 +2,23 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.org.fjiot.hdSoftServer.mapper.UserMapper">
+	<resultMap type="UserInfo" id="UserBean">
+		<id property="id" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="sex" column="SEX"/>
+		<result property="phone" column="PHONE"/>
+		<result property="email" column="EMAIL"/>
+		<result property="remark" column="REMARK"/>
+		<result property="permission" column="PERMISSION"/>
+		<result property="hospitalId" column="HOSPITAL_ID"/>
+		<association property="department" javaType="Department">
+			<id property="id" column="DID"/>
+			<result property="name" column="DNAME"/>
+			<result property="remark" column="DREMARK"/>
+		</association>
+	</resultMap>
 	<insert id="add" parameterType="User">
 		<selectKey resultType="string" keyProperty="id"
 			order="BEFORE">
@@ -14,5 +31,8 @@
 	</select>
 	<select id="selectOneById" resultType="User">
 		select * from SJ_USER where id = #{id}
+	</select>
+	<select id="selectInfoOneById" resultMap="UserBean">
+		select u.*, d.*, d.ID "DID", d.NAME "DNAME", d.REMARK "DREMARK" from SJ_USER u, SJ_DEPARTMENT d where u.DEPARTMENT_ID = d.ID and u.id = #{id}
 	</select>
 </mapper>
