@@ -41,7 +41,7 @@ public class NoticeServiceImpl implements NoticeService {
 		notice.setDepartmentId(user.getDepartmentId());
 		notice.setHospitalId(user.getHospitalId());
 		notice.setIsTop("0");
-		String time = new SimpleDateFormat("YYYY-MM-DD HH:MM:ss:SSS").format(new Date());
+		String time = new SimpleDateFormat("YYYY-MM-DD HH:MM:ss").format(new Date());
 		notice.setTime(time);
 		notice.setUserId(user.getId());
 		notice.setName(user.getNickname());
