@@ -13,6 +13,6 @@
 		#{isTop}, #{name})
 	</insert>
 	<select id="list" resultType="Notice">
-		select * from SJ_NOTICE where HOSPITAL_ID = #{hospitalId} and DEPARTMENT_ID = #{departmentId}
+		select * from SJ_NOTICE where HOSPITAL_ID = #{hospitalId} and DEPARTMENT_ID = #{departmentId} order by TIME desc
 	</select>
 </mapper>

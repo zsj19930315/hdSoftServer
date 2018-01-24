@@ -8,6 +8,8 @@
 */
 package cn.org.fjiot.hdSoftServer.service;
 
+import java.util.List;
+
 import cn.org.fjiot.hdSoftServer.entity.Device;
 import cn.org.fjiot.hdSoftServer.entity.other.DeviceInfo;
 import cn.org.fjiot.hdSoftServer.util.AjaxResult;
@@ -32,5 +34,7 @@ public interface DeviceService {
 	public AjaxResult edit(String token, String deviceNo, String roomBed);
 
 	public DeviceInfo selectInfoOne(String deviceNo);
+	
+	public List<Device> listDevice(String userId);
 
 }

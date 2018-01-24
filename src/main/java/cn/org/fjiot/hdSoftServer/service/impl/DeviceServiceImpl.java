@@ -56,7 +56,7 @@ public class DeviceServiceImpl implements DeviceService {
 		User user = (User) userSession.getAttribute("user");
 		Device device = deviceMapper.selectOne(deviceNo);
 		if (null == device) {
-			message = "数据库未找到该设备，请联系管理员";
+			message = "数据库未找到该设备:"+deviceNo+"，请联系管理员";
 			return new AjaxResult(code, message);
 		}
 		String userId = device.getUserId();
@@ -66,7 +66,7 @@ public class DeviceServiceImpl implements DeviceService {
 			return new AjaxResult(code, message);
 		}
 		code = "1";
-		message = "请求成功";
+		message = "绑定成功";
 		device.setUserId(user.getId());
 		deviceMapper.update(device);
 		return new AjaxResult(code, message);
@@ -123,6 +123,11 @@ public class DeviceServiceImpl implements DeviceService {
 	@Override
 	public DeviceInfo selectInfoOne(String deviceNo) {
 		return deviceMapper.selectInfoOne(deviceNo);
+	}
+
+	@Override
+	public List<Device> listDevice(String userId) {
+		return deviceMapper.selectListByUserId(userId);
 	}
 
 }
