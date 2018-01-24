@@ -55,7 +55,7 @@
 		select * from SJ_DEVICE where USER_ID = #{userId}
 	</select>
 	<select id="selectInfoListByUserId" parameterType="string" resultMap="DeviceBean">
-		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and u.id = #{userId} and u.DEPARTMENT_ID = dp.ID order by (WEIGHT_CUR / WEIGHT_SUM) desc
+		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and u.id = #{userId} and u.DEPARTMENT_ID = dp.ID order by ((WEIGHT_CUR - WEIGHT_CUR) / WEIGHT_SUM) ASC
 	</select>
 	<select id="selectInfoOne" parameterType="string" resultMap="DeviceBean">
 		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and d.DEVICE_NO = #{deviceNo} and u.DEPARTMENT_ID = dp.ID
