@@ -52,10 +52,11 @@
 		delete from SJ_DEVICE where DEVICE_NO = #{deviceNo} and USER_ID = #{userId}
 	</delete> -->
 	<select id="selectListByUserId" parameterType="string" resultType="Device">
-		select * from SJ_DEVICE where USER_ID = #{userId}
+		<!-- select * from SJ_DEVICE where USER_ID = #{userId} -->
+		select d.*,u.* from sj_device d, sj_user u where d.user_id = #{userId} and u.id = d.user_id 
 	</select>
 	<select id="selectInfoListByUserId" parameterType="string" resultMap="DeviceBean">
-		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and u.id = #{userId} and u.DEPARTMENT_ID = dp.ID order by ((WEIGHT_CUR - WEIGHT_CUR) / WEIGHT_SUM) ASC
+		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and u.id = #{userId} and u.DEPARTMENT_ID = dp.ID order by IS_START desc, (WEIGHT_CUR / WEIGHT_SUM) desc
 	</select>
 	<select id="selectInfoOne" parameterType="string" resultMap="DeviceBean">
 		select d.*, u.*, dp.*, d.ID "deviceId", u.ID "userId", dp.ID "departmentId", u.REMARK "userRemark", dp.REMARK "departmentRemark", u.NAME "userName", dp.NAME "departmentName" from SJ_DEVICE d, SJ_USER u, SJ_DEPARTMENT dp where d.USER_ID = u.ID and d.DEVICE_NO = #{deviceNo} and u.DEPARTMENT_ID = dp.ID
